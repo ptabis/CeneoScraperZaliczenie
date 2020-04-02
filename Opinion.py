@@ -4,7 +4,8 @@ from bs4 import BeautifulSoup
 class Opinion:
 
     def __init__(self, id, author, recommendation, stars, 
-                content, pros, cons, useful, useless, purchased):
+                content, pros, cons, useful, useless, purchased,
+                review_date, purchase_date):
         self.id = id
         self.author = author
         self.recommendation = recommendation
@@ -15,6 +16,8 @@ class Opinion:
         self.useful = useful
         self.useless = useless
         self.purchased = purchased
+        self.review_date = review_date
+        self.purchase_date = purchase_date
     
     def __repr__(self):
         return f"{{id={self.id},\
@@ -26,7 +29,9 @@ class Opinion:
     cons={self.cons},\
     useful={self.useful},\
     useless={self.useless},\
-    purchased={self.purchased}}}"
+    purchased={self.purchased},\
+    review_date={self.review_date},\
+    purchase_date={self.purchase_date}}}"
 
     @staticmethod
     def get_opinion_feature(opinion, tag, tag_class, child=None):

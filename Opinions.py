@@ -42,6 +42,12 @@ class Opinions:
                 else:
                     features['purchased'] = False
                 features['id'] = opinion["data-entry-id"]
+                dates = opinion.find("span", "review-time").find_all("time")
+                features['review_date'] = dates.pop(0)["datetime"]
+                try:
+                    features['purchase_date'] = dates.pop(0)["datetime"]
+                except IndexError:
+                    features['purchase_date'] = None
                 
                 opinions_list.append(
                     Opinion(
@@ -55,6 +61,8 @@ class Opinions:
                         features['useful'],
                         features['useless'],
                         features['purchased'],
+                        features['review_date'],
+                        features['purchase_date']
                     )
                 )
             try:
