@@ -3,7 +3,7 @@ CREATE DATABASE `ceneo`;
 USE `ceneo`;
 
 CREATE TABLE `opinions` (
-    `id` INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    `id` INT PRIMARY KEY NOT NULL,
     `author` VARCHAR(125),
     `recommendation` varchar(15),
     `stars` VARCHAR(5),
