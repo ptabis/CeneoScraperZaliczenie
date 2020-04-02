@@ -6,7 +6,7 @@ CREATE TABLE `opinions` (
     `id` INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     `author` VARCHAR(125),
     `recommendation` varchar(15),
-    `stars` VARCHAR(3),
+    `stars` VARCHAR(5),
     `content` TEXT,
     `pros` TEXT,
     `cons` TEXT,
