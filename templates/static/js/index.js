@@ -1,3 +1,10 @@
 import '../css/main.css';
 
-console.log(":)");
+let mod = document.body.dataset['mod']
+switch(mod) {
+    case 'home':
+        break;
+    case 'extract':
+        break;
+
+}
