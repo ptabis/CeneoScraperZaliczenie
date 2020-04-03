@@ -1,5 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
+import mysql.connector
+from Database import DB
 
 class Opinion:
 
@@ -32,6 +34,22 @@ class Opinion:
     purchased={self.purchased},\
     review_date={self.review_date},\
     purchase_date={self.purchase_date}}}"
+
+    def insert_to_database(self):
+        
+        cursor = DB.cursor()
+        query = "INSERT INTO opinions (\
+                id, author, recommendation, stars, content,\
+                pros, cons, useful, useless, purchased, review_date, purchase_date\
+            )\
+            VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        values = (self.id, self.author, self.recommendation, self.stars, self.content,
+        self.pros, self.cons, self.useful, self.useless, self.purchased, self.review_date, self.purchase_date)
+        try:
+            cursor.execute(query, values)
+        except mysql.connector.errors.IntegrityError:
+            pass
+        DB.commit()
 
     @staticmethod
     def get_opinion_feature(opinion, tag, tag_class, child=None):

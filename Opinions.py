@@ -23,6 +23,10 @@ class Opinions:
 
     def __str__(self):
         return str([x for x in self.opinions])
+    
+    def insert_to_database(self):
+        for opinion in self.opinions:
+            opinion.insert_to_database()
 
     @staticmethod
     def get_opinions(id):
@@ -72,4 +76,8 @@ class Opinions:
         return Opinions(opinions_list)
 
 if __name__ == "__main__":
-    print(Opinions.get_opinions(91074697))
+    ops = Opinions.get_opinions(91074697)
+    ops.insert_to_database()
+
+    ops = Opinions.get_opinions(91715705)
+    ops.insert_to_database()
