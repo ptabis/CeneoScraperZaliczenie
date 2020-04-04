@@ -1,4 +1,5 @@
 import '../css/main.css';
+import oExtract from './extractHandler';
 import $ from 'jquery';
 import 'datatables.net';
 import 'datatables.net-bs4/css/dataTables.bootstrap4.min.css';
@@ -8,10 +9,7 @@ switch(mod) {
     case 'home':
         break;
     case 'extract':
-        document.querySelector('#extraction_start').onclick = function(e) {
-            e.preventDefault()
-            window.location = '/extract/'+document.querySelector('#product_id').value
-        };
+        oExtract.init();
         break;
     case "product":
         $('#opinions-table').DataTable({
