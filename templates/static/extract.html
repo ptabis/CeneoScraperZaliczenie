@@ -22,9 +22,11 @@
     </div>
     {% endif %}
     <div class="form-group">
-        <input type="text" id="product_id" name="product_id" placeholder="Podaj id produktu">
-        <input class="btn btn-primary" type="button" id="extraction_start"
-        value="Rozpocznij ekstrakcję">
+        <input type="text" id="product-id" name="product_id" placeholder="Podaj id produktu">
+        <a class="btn btn-primary" type="button" id="extraction-start">
+            <span>Rozpocznij ekstrakcję</span>
+            <div id="extraction-loader" class="spinner-border spinner-border-sm text-info d-none" role="status"></div>
+        </a>
     </div>
     <div class="row">
     <div class="col-3"></div>
