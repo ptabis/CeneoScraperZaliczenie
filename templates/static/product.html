@@ -1,48 +1,57 @@
 {% extends "template.html" %}
 
 {% block content %}
-    <table id="opinions-table" class="table table-striped table-bordered table-dark">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Autor</th>
-                <th>Rekomendacja</th>
-                <th>Ocena</th>
-                <th>Komentarz</th>
-                <th>Zalety</th>
-                <th>Wady</th>
-                <th>Użyteczność opinii</th>
-                <th>Nieużyteczność opinii</th>
-                <th>Zakupiono?</th>
-                <th>Data wystawienia</th>
-                <th>Data zakupu produktu</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for opinion in opinions %}
-            <tr>
-                {% for feature in ['id', 'author', 'recommendation', 
-                                    'stars', 'content', 'pros', 
-                                    'cons', 'useful', 'useless',
-                                    'purchased', 'review_date', 'purchase_date'] %}
-                <td>
-                    {% if feature == 'purchased' %}
-                        {% if opinion[feature] == 1 %}
-                        Tak
-                        {% else %}
-                        Nie
-                        {% endif %}
-                    {% else %}
-                        {% if opinion[feature] == None %}
-                            Brak
-                        {% else %}
-                            {{opinion[feature]}}
-                        {% endif %}
-                    {% endif %}
-                </td>
-                {% endfor %}
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="row w-100">
+        <div class="col-12 text-center">
+            <h3>{{product.name}}</h3>
+            <h5>{{product.subname}}</h5>
+            <span class="h6">Cena: {{product.price}} zł</span> | <span class="h6">Ocena: {{product.score}}/5</span>
+        </div>
+        <div class="col-12 d-flex justify-content-center">
+            <table id="opinions-table" class="table table-striped table-bordered table-dark" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Autor</th>
+                        <th>Rekomendacja</th>
+                        <th>Ocena</th>
+                        <th>Komentarz</th>
+                        <th>Zalety</th>
+                        <th>Wady</th>
+                        <th>Użyteczność opinii</th>
+                        <th>Nieużyteczność opinii</th>
+                        <th>Zakupiono?</th>
+                        <th>Data wystawienia</th>
+                        <th>Data zakupu produktu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for opinion in opinions %}
+                    <tr>
+                        {% for feature in ['id', 'author', 'recommendation', 
+                                            'stars', 'content', 'pros', 
+                                            'cons', 'useful', 'useless',
+                                            'purchased', 'review_date', 'purchase_date'] %}
+                        <td>
+                            {% if feature == 'purchased' %}
+                                {% if opinion[feature] == 1 %}
+                                Tak
+                                {% else %}
+                                Nie
+                                {% endif %}
+                            {% else %}
+                                {% if opinion[feature] == None %}
+                                    Brak
+                                {% else %}
+                                    {{opinion[feature]}}
+                                {% endif %}
+                            {% endif %}
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div> 
 {% endblock %}
