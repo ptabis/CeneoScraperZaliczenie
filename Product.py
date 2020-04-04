@@ -55,6 +55,7 @@ class Product:
         features = {key:Product.get_opinion_feature(tree, args)
                             for key, args in Product.TAGS.items()}
         features['id'] = id
+        features['score'] = features['score'][:3]
         opinions = Opinions.get_opinions(id)
 
         product = Product(
