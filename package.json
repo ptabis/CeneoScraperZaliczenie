@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack -p --progress --config webpack.config.js",
     "watch": "webpack --progress -d --config webpack.config.js --watch",
-    "server": "FLASK_ENV=development flask run"
+    "server": "FLASK_RUN_PORT=80 FLASK_ENV=development flask run"
   },
   "author": "Patryk Tabiś",
   "license": "MIT",
