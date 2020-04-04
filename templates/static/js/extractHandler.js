@@ -18,7 +18,7 @@ var oExtract = {
     },
     extractFromId: function() {
         document.querySelector(oExtract.sel.extractionLoader).classList.toggle("d-none");
-        window.location = '/extract/'+document.querySelector(oExtract.sel.productId).value;
+        window.location = '/extract/'+document.querySelector(oExtract.sel.productId).value+'?extract=1';
     }
 }
 
