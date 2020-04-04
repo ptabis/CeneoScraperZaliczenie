@@ -8,6 +8,8 @@ CREATE TABLE `products` (
     `subname` VARCHAR(255),
     `price` VARCHAR(100),
     `score` VARCHAR(6)
+    CHARACTER SET `utf8mb4`
+    COLLATE `utf8mb4_general_ci`
 );
 
 CREATE TABLE `opinions` (
@@ -27,3 +29,5 @@ CREATE TABLE `opinions` (
     FOREIGN KEY (`product_id`)
     REFERENCES `products`(`id`)
 );
+
+ALTER TABLE `opinions` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
