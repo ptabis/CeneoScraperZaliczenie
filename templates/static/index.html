@@ -1,4 +1,50 @@
 {% extends "template.html" %}
 
 {% block content %}
+<div class="row w-100 mt-5">
+  <div class="col-1"></div>
+  <div class="col-10 center-text">
+    <div class="card bg-secondary mt-5">
+      <div class="card-body">
+        <h4 class="card-title">CeneoScraper</h4>
+        <hr>
+        <p class="card-text">
+          <h5>Cel aplikacji</h5>
+          <hr>
+          <span>Aplikacja ta ma na celu zbieranie danych produktów ze strony <a href="https://ceneo.pl" class="text-white">ceneo.pl</a>.</span>
+        </p>
+        <p class="card-text">
+          <h5>Działanie aplikacji</h5>
+          <hr>
+          <span>
+            Aby rozpocząć należy wybrać zakładkę <a href="/extract" class="text-white">Ekstrakcja opinii</a> z menu górnego. 
+            W formularzu na tej stronie należy podać id produktu ze strony <a href="https://ceneo.pl" class="text-white">ceneo.pl</a>.
+            Po wciśnięciu przycisku rozpoczynającego ekstrakcję, nastąpi przekierowanie na stronę wydobytego produktu, gdzie można zobaczyć podstawowe dane produktu i opinie na jego temat.
+            Listę zapisanych produktów można znaleźć w zakładce <a href="/products" class="text-white">Lista produktów</a>. Z tej listy można wybrać produkt, aby przejrzeć informacje o nim.
+          </span>
+        </p>
+        <p class="card-text">
+          <h5>Zastosowane technologie</h5>
+          <hr>
+          <span>
+            Projekt wykorzystuje języki programowania Python oraz JavaScript. Do przetrzymywania danych używana jest baza danych MySQL. 
+            Część backendowa projektu wykorzystuje framework Flask. Do łączenia z bazą danych wykorzystywany jest mysql.connector, 
+            a do wyciągania danych ze strony używana są biblioteki requests i BeautifulSoup 4.
+            Frontend używa Bootstrapa 4, jQuery, a także biblioteki DataTables. Całość połączona jest ze sobą przy użyciu Webpacka.
+          </span>
+        </p>
+        <p class="card-text">
+          <h5>Zastosowane podejścia</h5>
+          <hr>
+          <span>
+            Stworzyłem 3 główne klasy, które pomagają mi zarządzać danymi po stronie backendu. Klasa Opinions przetrzymuje tablicę opinii złożoną z elementów klasy Opinion,
+             a także zarządza wydobyciem danych opinii. Przy czym samo wydobycie danych pojedynczej opinii odbywa się w klasie Opinion. Klasa Product służy do przechowania danych o danym produkcie.
+             Frontend wykorzystuje obiekty do zarządzania stanem podstron, które tego wymagają. Po przejściu na podaną podstronę inicjalizowane są te obiekty, których ona potrzebuje. 
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-1"></div>
+</div>
 {% endblock %}
