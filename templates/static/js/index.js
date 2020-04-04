@@ -14,7 +14,14 @@ switch(mod) {
         };
         break;
     case "product":
-        $('#opinions-table').DataTable();
+        $('#opinions-table').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Polish.json"
+            },
+            "dom": '<"top"ilf>rt<"bottom"p><"clear">',
+            "scrollX": true,
+            "scrollY": true
+        });
         $('div.dataTables_filter input').addClass('form-control');
         $('div.dataTables_filter select').addClass('form-control');
         break;
