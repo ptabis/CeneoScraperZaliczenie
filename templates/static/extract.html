@@ -1,0 +1,39 @@
+{% extends "template.html" %}
+
+{% block content %}
+<div id="wrapper" class="d-flex flex-column">
+    <div class="row w-100">
+        <div class="col-3"></div>
+        <div class="col-6">
+        <h2 class="text-uppercase text-center">Ekstrakcja produktu</h2>
+    </div>
+    <div class="col-3"></div>
+</div>
+<div class="row d-flex flex-row align-items-center text-center w-100">
+    <div class="col-1"></div>
+    <div class="col-10 pt-4 mt-4 px-3 mx-2 card bg-secondary">
+    <div class="row d-flex flex-column">
+    {% if error == 1 %}
+    <div class="alert alert-danger" role="alert">
+        Błąd ekstrakcji!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endif %}
+    <div class="form-group">
+        <input type="text" id="product-id" name="product_id" placeholder="Podaj id produktu">
+        <a class="btn btn-primary" type="button" id="extraction-start">
+            <span>Rozpocznij ekstrakcję</span>
+            <div id="extraction-loader" class="spinner-border spinner-border-sm text-info d-none" role="status"></div>
+        </a>
+    </div>
+    <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+        <p>Aby rozpocząć ekstrakcję podaj poprawny numer produktu z portalu ceneo.pl, a następnie naciśnij przycisk 
+            <span class="bg-primary text-white p-2 rounded">Rozpocznij ekstrakcję</span>
+        </p>
+    </div>
+</div>
+{% endblock %}

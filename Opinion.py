@@ -5,10 +5,11 @@ from Database import DB
 
 class Opinion:
 
-    def __init__(self, id, author, recommendation, stars, 
+    def __init__(self, id, product_id, author, recommendation, stars, 
                 content, pros, cons, useful, useless, purchased,
                 review_date, purchase_date):
         self.id = id
+        self.product_id = product_id
         self.author = author
         self.recommendation = recommendation
         self.stars = stars
@@ -23,6 +24,7 @@ class Opinion:
     
     def __repr__(self):
         return f"{{id={self.id},\
+    product_id={self.product_id},\
     author={self.author},\
     recommendation={self.recommendation},\
     stars={self.stars},\
@@ -39,14 +41,16 @@ class Opinion:
         
         cursor = DB.cursor()
         query = "INSERT INTO opinions (\
-                id, author, recommendation, stars, content,\
+                id, product_id, author, recommendation, stars, content,\
                 pros, cons, useful, useless, purchased, review_date, purchase_date\
             )\
-            VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-        values = (self.id, self.author, self.recommendation, self.stars, self.content,
+            VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        values = (self.id, self.product_id, self.author, self.recommendation, self.stars, self.content,
         self.pros, self.cons, self.useful, self.useless, self.purchased, self.review_date, self.purchase_date)
         try:
             cursor.execute(query, values)
+        except mysql.connector.errors.DataError:
+            pass
         except mysql.connector.errors.IntegrityError:
             pass
         DB.commit()

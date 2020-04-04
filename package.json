@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack -p --progress --config webpack.config.js",
     "watch": "webpack --progress -d --config webpack.config.js --watch",
-    "server": "FLASK_ENV=development flask run"
+    "server": "FLASK_RUN_PORT=80 FLASK_ENV=development flask run"
   },
   "author": "Patryk Tabiś",
   "license": "MIT",
@@ -21,6 +21,10 @@
     "webpack-cli": "^3.3.11"
   },
   "dependencies": {
-    "bootstrap": "^4.4.1"
+    "bootstrap": "^4.4.1",
+    "datatables": "^1.10.18",
+    "datatables.net": "^1.10.20",
+    "datatables.net-bs4": "^1.10.20",
+    "datatables.net-dt": "^1.10.20"
   }
 }

@@ -46,6 +46,7 @@ class Opinions:
                 else:
                     features['purchased'] = False
                 features['id'] = opinion["data-entry-id"]
+                features['product_id'] = id
                 dates = opinion.find("span", "review-time").find_all("time")
                 features['review_date'] = dates.pop(0)["datetime"]
                 try:
@@ -56,6 +57,7 @@ class Opinions:
                 opinions_list.append(
                     Opinion(
                         features['id'],
+                        features['product_id'],
                         features['author'],
                         features['recommendation'],
                         features['stars'],
