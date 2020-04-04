@@ -4,7 +4,8 @@ import 'datatables.net-bs4/css/dataTables.bootstrap4.min.css';
 
 let oProduct = {
     sel: {
-
+        productsTable: '#products-table',
+        opinionsTable: '#opinions-table'
     },
     data: {
         mod: document.body.dataset['mod']
@@ -21,8 +22,7 @@ let oProduct = {
         }
     },
     productTable: function() {
-        console.log("xD")
-        $('#products-table').DataTable({
+        $(oProduct.sel.productsTable).DataTable({
             "language": {
                 "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Polish.json"
             },
@@ -32,7 +32,7 @@ let oProduct = {
         });
     },
     opinionTable: function() {
-        $('#opinions-table').DataTable({
+        $(oProduct.sel.opinionsTable).DataTable({
             "language": {
                 "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Polish.json"
             },
