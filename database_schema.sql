@@ -7,7 +7,7 @@ CREATE TABLE `products` (
     `name` VARCHAR(255),
     `subname` VARCHAR(255),
     `price` VARCHAR(100),
-    `score` FLOAT(4, 3)
+    `score` VARCHAR(6)
 );
 
 CREATE TABLE `opinions` (
