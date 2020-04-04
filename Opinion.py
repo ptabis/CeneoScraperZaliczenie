@@ -49,6 +49,8 @@ class Opinion:
         self.pros, self.cons, self.useful, self.useless, self.purchased, self.review_date, self.purchase_date)
         try:
             cursor.execute(query, values)
+        except mysql.connector.errors.DataError:
+            pass
         except mysql.connector.errors.IntegrityError:
             pass
         DB.commit()

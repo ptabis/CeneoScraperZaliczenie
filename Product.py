@@ -32,6 +32,8 @@ class Product:
         values = (self.id, self.name, self.subname, self.price, self.score)
         try:
             cursor.execute(query, values)
+        except mysql.connector.errors.DataError:
+            pass
         except mysql.connector.errors.IntegrityError:
             pass
         self.opinions.insert_to_database()
