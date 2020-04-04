@@ -7,9 +7,9 @@ def product(id):
     cursor = DB.cursor(dictionary=True)
 
     cursor.execute("SELECT * FROM products WHERE id=%s", (id,))
-    products = cursor.fetchall()
+    product = cursor.fetchall()
 
     cursor.execute("SELECT * FROM opinions WHERE product_id=%s", (id,))
     opinions = cursor.fetchall()
 
-    return render_template("product.html", subname=f"Produkt - {id}", id=id, mod="product", opinions=opinions, products=products)
+    return render_template("product.html", subname=f"Produkt - {id} - {product[0]['name']}", id=id, mod="product", opinions=opinions, product=product[0])
