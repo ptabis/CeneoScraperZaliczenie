@@ -11,7 +11,7 @@ def extract():
         pass
     return render_template("extract.html", subname="Ekstrakcja opinii", mod="extract")
 
-@app.route('/extract/<id>')
+@app.route('/extract/<id>/')
 def extract_product(id):
     try:
         product = Product.get_product(int(id))

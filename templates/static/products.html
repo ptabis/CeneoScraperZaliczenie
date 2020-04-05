@@ -9,7 +9,6 @@
         <table id="products-table" class="table table-striped table-bordered table-dark" style="width: 100%;">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Nazwa</th>
                     <th>L. wad</th>
                     <th>L. zalet</th>
@@ -21,12 +20,16 @@
             <tbody>
                 {% for product in products %}
                 <tr>
-                    {% for feature in ['id', 'name', 'cons', 'pros', 'opinions', 'score'] %}
+                    {% for feature in ['name', 'cons', 'pros', 'opinions', 'score'] %}
                     <td>
                         {% if product[feature] == None %}
                             Brak
                         {% else %}
-                            <a href="/product/{{product['id']}}" class="text-white">{{product[feature]}}</a>
+                            {% if feature == 'name' %}
+                                <a href="/product/{{product['id']}}" class="text-white">{{product[feature]}}</a>
+                            {% else %}
+                                <span class="text-white">{{product[feature]}}</span>
+                            {% endif %}
                         {% endif %}
                     </td>
                     {% endfor %}
