@@ -42,17 +42,40 @@ class Opinion:
         cursor = DB.cursor()
         query = "INSERT INTO opinions (\
                 id, product_id, author, recommendation, stars, content,\
-                pros, cons, useful, useless, purchased, review_date, purchase_date\
+                useful, useless, purchased, review_date, purchase_date\
             )\
-            VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+            VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
         values = (self.id, self.product_id, self.author, self.recommendation, self.stars, self.content,
-        self.pros, self.cons, self.useful, self.useless, self.purchased, self.review_date, self.purchase_date)
+        self.useful, self.useless, self.purchased, self.review_date, self.purchase_date)
         try:
             cursor.execute(query, values)
         except mysql.connector.errors.DataError:
             pass
         except mysql.connector.errors.IntegrityError:
             pass
+
+        if self.pros is not None:
+            for pro in self.pros.strip().split("\n"):
+                query = "INSERT INTO pros (opinion_id, text) VALUES( %s, %s)"
+                values = (self.id, pro)
+                try:
+                    cursor.execute(query, values)
+                    print("s")
+                except mysql.connector.errors.DataError:
+                    pass
+                except mysql.connector.errors.IntegrityError:
+                    pass
+
+        if self.cons is not None:
+            for con in self.cons.strip().split("\n"):
+                query = "INSERT INTO cons (opinion_id, text) VALUES( %s, %s)"
+                values = (self.id, con)
+                try:
+                    cursor.execute(query, values)
+                except mysql.connector.errors.DataError:
+                    pass
+                except mysql.connector.errors.IntegrityError:
+                    pass
         DB.commit()
 
     @staticmethod
