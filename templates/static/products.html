@@ -11,12 +11,17 @@
                 <tr>
                     <th>ID</th>
                     <th>Nazwa</th>
+                    <th>L. wad</th>
+                    <th>L. zalet</th>
+                    <th>L. opinii</th>
+                    <th>Ocena</th>
+                    <th>Pobierz JSON</th>
                 </tr>
             </thead>
             <tbody>
                 {% for product in products %}
                 <tr>
-                    {% for feature in ['id', 'name'] %}
+                    {% for feature in ['id', 'name', 'cons', 'pros', 'opinions', 'score'] %}
                     <td>
                         {% if product[feature] == None %}
                             Brak
@@ -25,6 +30,7 @@
                         {% endif %}
                     </td>
                     {% endfor %}
+                    <td><a id="" data-id="{{product.id}}" href="/product/{{product.id}}/json" download="{{product.name}}.json" class="btn btn-primary">Pobierz JSON</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
