@@ -20,6 +20,16 @@ def product(id):
     cursor.execute("SELECT * FROM opinions WHERE product_id=%s", (id,))
     opinions = cursor.fetchall()
 
+    for opinion in opinions:
+        cursor.execute("SELECT text from pros WHERE opinion_id = %s", (opinion['id'],))
+        pros = cursor.fetchall()
+        opinion['pros'] = pros
+
+    for opinion in opinions:
+        cursor.execute("SELECT text from cons WHERE opinion_id = %s", (opinion['id'],))
+        cons = cursor.fetchall()
+        opinion['cons'] = cons
+
     return render_template("product.html", subname=f"Produkt - {id} - {product[0]['name']}", id=id, mod="product", opinions=opinions, product=product[0])
 
 
@@ -32,6 +42,16 @@ def product_json(id):
 
     cursor.execute("SELECT * FROM opinions WHERE product_id=%s", (id,))
     opinions = cursor.fetchall()
+
+    for opinion in opinions:
+        cursor.execute("SELECT text from pros WHERE opinion_id = %s", (opinion['id'],))
+        pros = cursor.fetchall()
+        opinion['pros'] = pros
+
+    for opinion in opinions:
+        cursor.execute("SELECT text from cons WHERE opinion_id = %s", (opinion['id'],))
+        cons = cursor.fetchall()
+        opinion['cons'] = cons
 
     json = {
         'product': product,

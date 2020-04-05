@@ -40,6 +40,16 @@
                                 {% else %}
                                 Nie
                                 {% endif %}
+                            {% elif feature == 'pros' or feature == 'cons' %}
+                                {% if opinion[feature]|length == 0%}
+                                    Brak
+                                {% else %}
+                                    <ul style="list-style: none;">
+                                    {% for l in opinion[feature] %}
+                                        <li>{{l.text}},</li>
+                                    {% endfor %}
+                                    </ul>
+                                {% endif %}
                             {% else %}
                                 {% if opinion[feature] == None %}
                                     Brak

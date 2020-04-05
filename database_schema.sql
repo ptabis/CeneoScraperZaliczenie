@@ -19,8 +19,6 @@ CREATE TABLE `opinions` (
     `recommendation` varchar(15),
     `stars` VARCHAR(5),
     `content` TEXT,
-    `pros` TEXT,
-    `cons` TEXT,
     `useful` INT,
     `useless` INT,
     `purchased` BOOL,
@@ -31,3 +29,15 @@ CREATE TABLE `opinions` (
 );
 
 ALTER TABLE `opinions` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+
+CREATE TABLE `pros` (
+    `opinion_id` INT NOT NULL,
+    `text` VARCHAR(500),
+    PRIMARY KEY (`opinion_id`, `text`)
+);
+
+CREATE TABLE `cons` (
+    `opinion_id` INT NOT NULL,
+    `text` VARCHAR(500),
+    PRIMARY KEY (`opinion_id`, `text`)
+);
