@@ -5,7 +5,12 @@ from Database import DB
 @app.route('/products')
 def products():
     cursor = DB.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM products")
+    cursor.execute("SELECT p.*, COUNT(o.id) AS opinions,\
+         COUNT(pr.text) AS pros, COUNT(c.text) AS cons\
+         FROM products p\
+         LEFT JOIN opinions o ON p.id = o.product_id\
+         LEFT JOIN pros pr ON pr.opinion_id = o.id\
+         LEFT JOIN cons c ON c.opinion_id = o.id")
     products = cursor.fetchall()
 
     return render_template("products.html", subname="Lista produktów", mod="products", products=products)
