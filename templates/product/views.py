@@ -10,8 +10,10 @@ def products():
          FROM products p\
          LEFT JOIN opinions o ON p.id = o.product_id\
          LEFT JOIN pros pr ON pr.opinion_id = o.id\
-         LEFT JOIN cons c ON c.opinion_id = o.id")
+         LEFT JOIN cons c ON c.opinion_id = o.id\
+         GROUP BY p.id")
     products = cursor.fetchall()
+    print(products)
 
     return render_template("products.html", subname="Lista produktów", mod="products", products=products)
 
