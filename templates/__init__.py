@@ -6,4 +6,5 @@ app.config['JSON_AS_ASCII'] = False
 import templates.home.views
 import templates.extract.views
 import templates.product.views
+import templates.charts.views
 import templates.about.views
