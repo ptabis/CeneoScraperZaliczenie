@@ -67,3 +67,12 @@ def product_json(id):
 
     return jsonify(json)
 
+@app.route('/product/<id>/recommendationRatio')
+def recommendation_ratio(id):
+    cursor = DB.cursor()
+
+    cursor.execute("SELECT recommendation FROM opinions WHERE product_id=%s", (id,))
+    rec = cursor.fetchall()
+    cursor.close()
+
+    return jsonify(rec)
