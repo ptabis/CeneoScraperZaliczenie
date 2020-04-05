@@ -67,7 +67,7 @@ def product_json(id):
 
     return jsonify(json)
 
-@app.route('/product/<id>/recommendationRatio')
+@app.route('/product/<id>/recommendationRatio/')
 def recommendation_ratio(id):
     cursor = DB.cursor()
 
@@ -76,3 +76,13 @@ def recommendation_ratio(id):
     cursor.close()
 
     return jsonify(rec)
+
+@app.route('/product/<id>/opinionsPerStars/')
+def opinions_per_stars(id):
+    cursor = DB.cursor(dictionary=True)
+
+    cursor.execute("SELECT stars, count(id) AS opinions FROM opinions WHERE product_id=%s GROUP BY stars ORDER BY stars ASC", (id,))
+    stars = cursor.fetchall()
+    cursor.close()
+
+    return jsonify(stars)

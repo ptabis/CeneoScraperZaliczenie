@@ -6,3 +6,13 @@
     font-weight: bold;
     color: black;
 }
+
+.ct-label.ct-label.ct-horizontal.ct-end {
+    position: relative;
+    justify-content: flex-end;
+    text-align: right;
+    transform-origin: 100% 0;
+    transform: translate(-50%) rotate(-35deg);
+    white-space:nowrap;
+    color: black;
+  }

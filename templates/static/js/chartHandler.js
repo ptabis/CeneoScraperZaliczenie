@@ -12,7 +12,7 @@ var oChart = {
     init: function() {
         oChart.data.productId = document.querySelector('#product_id').innerText;
         oChart.getPieChart();
-        //oChart.getBarChart();
+        oChart.getBarChart();
     },
     getPieChart: function() {
         fetch(`/product/${oChart.data.productId}/recommendationRatio`)
@@ -46,6 +46,28 @@ var oChart = {
             new Chartist.Pie(oChart.sel.pieChart, data, options);
         })
 
+    },
+    getBarChart: function() {
+        fetch(`/product/${oChart.data.productId}/opinionsPerStars/`)
+        .then(res => res.json())
+        .then(json => {
+            let data = {
+                labels: [],
+                series: [[]]
+            };
+
+            for(let i = 0; i < json.length; i++) {
+                data.labels.push(json[i].stars);
+                data.series[0].push(json[i].opinions);
+            }
+
+            let options = {
+                width: 400,
+                height: 400,
+                chartPadding: 50,
+            }; 
+            new Chartist.Bar(oChart.sel.barChart, data, options);
+        });
     },
     sum: function(a, b) { 
         return a + b 
